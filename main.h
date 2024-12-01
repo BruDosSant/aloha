@@ -6,5 +6,6 @@
 
 int print_c(va_list val);
 int _putchar(char c);
+int _printf(const char *format, ...);
 
 #endif
