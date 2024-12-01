@@ -19,7 +19,11 @@ int _printf(const char *format, ...)
 		if (*ptr == '%')
 		{
 			ptr++;
-			if (*ptr == '%')
+			if (*ptr == '\0')
+			{
+				break;
+			}
+			else if (*ptr == '%')
 			{
 				write(1, "%", 1);
 				count++;
@@ -50,9 +54,15 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
+				write(1, "%", 1);
 				write(1, ptr, 1);
-				count++;
+				count += 2;
 			}
+		}
+		else
+		{
+			write(1, ptr, 1);
+			count++;
 		}
 		ptr++;
 	}
